@@ -33,7 +33,10 @@ async function run() {
           })
           for (const el of sessions[value.to]) {
             if (el.readyState == 1) {
-              el.send(message.value)
+              el.send(JSON.stringify({
+                type: "notification/notify",
+                payload: value 
+              }))
               ok = true;
             }
           }

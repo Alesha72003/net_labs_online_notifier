@@ -14,9 +14,9 @@ async function run() {
     messages: [
       {
         value: JSON.stringify({
-          from: 0,
-          to: 1,
-          text: "test"
+          from: 1,
+          to: 2,
+          text: "УРАА"
         })
       }
     ]

@@ -12,6 +12,7 @@ module.exports = (app) => {
       ws.close()
       return
     }
+    console.log(`Opened websocket for user ${req.user.username}`)
     if (!sessions[req.user.id]) {
       sessions[req.user.id] = new Set()
     }
@@ -33,7 +34,7 @@ module.exports.on = (type, f) => {
 }
 
 module.exports.on("close", (ws) => {
-  console.log("Websocket closed")
+  console.log(`Websocket closed for ${ws.req.user.username}`)
   sessions[ws.req.user.id].delete(ws)
 })
 
