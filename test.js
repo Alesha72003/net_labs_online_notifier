@@ -14,14 +14,29 @@ async function run() {
     messages: [
       {
         value: JSON.stringify({
-          from: 1,
-          to: 2,
+          from: 0,
+          to: 1,
           text: "УРАА"
         })
       }
     ]
   })
-  await producer.disconnect()
+  // await producer.disconnect()
 }
 
-run()
+producer.connect().then(() => {
+  setInterval(() => {
+    producer.send({
+      topic: "OnlineSend",
+      messages: [
+        {
+          value: JSON.stringify({
+            from: 0,
+            to: 1,
+            text: `Тест`
+          })
+        }
+      ]
+    })
+  },15000);
+})

@@ -31,14 +31,14 @@ async function run() {
               resolve()
             })
           })
-          for (const el of sessions[value.to]) {
-            if (el.readyState == 1) {
-              el.send(JSON.stringify({
-                type: "notification/notify",
-                payload: value 
-              }))
-              ok = true;
-            }
+        }
+        for (const el of sessions[value.to]) {
+          if (el.readyState == 1) {
+            el.send(JSON.stringify({
+              type: "notification/notify",
+              payload: value 
+            }))
+            ok = true;
           }
         }
       }
